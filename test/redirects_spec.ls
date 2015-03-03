@@ -10,7 +10,6 @@ httpify = (urlOrNot) ->
         return urlOrNot
     return 'http://' + urlOrNot
 
-
 title = (html) -> unfluff(html).title
 text = (html) -> unfluff(html).text
 
@@ -26,8 +25,11 @@ assertSameTarget = (aliasUrl, targetUrl, done) ->
         assertThat text(aliasHtml), equalTo text(targetHtml)
         done()
 
-describe 'it-agile.de redirects' ->
-    specify 'host without www', (done) ->
-        assertSameTarget 'it-agile.de', 'www.it-agile.de', done
-    specify 'Agile Review subscription', (done) ->
-        assertSameTarget 'www.agilereview.de', 'www.itagileshop.de/lesen/agile-review/', done
+describe 'Url redirections:' ->
+    redirections =
+        'it-agile.de': 'www.it-agile.de'
+        'www.agilereview.de': 'www.itagileshop.de/lesen/agile-review/'
+
+    for let alias, target of redirections
+        specify "#alias → #target", (done) ->
+            assertSameTarget alias, target, done
