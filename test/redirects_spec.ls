@@ -5,18 +5,21 @@ require! {
 	async
 }
 
-title = (html) ->
-	unfluff(html).title
+title = (html) -> unfluff(html).title
+text = (html) -> unfluff(html).text
 
+getHtml = (url, cb) -->
+	request url, (_, __, html) -> cb(null, html)
 getTitle = (url, cb) -->
 	request url, (_, __, html) -> cb(null, title(html))
 
 assertSameTarget = (aliasUrl, targetUrl, done) ->
 	async.parallel [
-		getTitle(aliasUrl)
-		getTitle(targetUrl)
+		getHtml(aliasUrl)
+		getHtml(targetUrl)
 	], (_, results) ->
-		assertThat results[0], equalTo results[1]
+		assertThat title(results[0]), equalTo title(results[1])
+		assertThat text(results[0]), equalTo text(results[1])
 		done()
 
 describe 'it-agile.de redirects' ->
