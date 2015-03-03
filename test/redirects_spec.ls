@@ -22,3 +22,5 @@ assertSameTarget = (aliasUrl, targetUrl, done) ->
 describe 'it-agile.de redirects' ->
 	specify 'host without www', (done) ->
 		assertSameTarget 'http://it-agile.de', 'http://www.it-agile.de', done
+	specify 'Agile Review subscription', (done) ->
+		assertSameTarget 'http://www.agilereview.de/abo', 'http://www.itagileshop.de/lesen/agile-review/', done
