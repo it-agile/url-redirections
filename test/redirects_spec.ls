@@ -17,9 +17,9 @@ assertSameTarget = (aliasUrl, targetUrl, done) ->
 	async.parallel [
 		getHtml(aliasUrl)
 		getHtml(targetUrl)
-	], (_, results) ->
-		assertThat title(results[0]), equalTo title(results[1])
-		assertThat text(results[0]), equalTo text(results[1])
+	], (_, [aliasHtml, targetHtml]) ->
+		assertThat title(aliasHtml), equalTo title(targetHtml)
+		assertThat text(aliasHtml), equalTo text(targetHtml)
 		done()
 
 describe 'it-agile.de redirects' ->
