@@ -29,6 +29,8 @@ describe 'Url redirections:' ->
     redirections =
         'it-agile.de': 'www.it-agile.de'
         'www.agilereview.de': 'www.itagileshop.de/lesen/agile-review/'
+        'it-agile.de/csm': 'www.it-agile.de/schulungen/scrum-zertifizierung/schulung-zum-certified-scrummaster-csm/'
+        'it-agile.de/cspo': 'www.it-agile.de/schulungen/scrum-zertifizierung/schulung-zum-certified-product-owner-cspo/'
 
     for let alias, target of redirections
         specify "#alias → #target", (done) ->
