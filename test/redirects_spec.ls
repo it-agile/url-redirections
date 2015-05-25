@@ -33,5 +33,5 @@ describe 'Url redirections:' ->
         'it-agile.de/cspo': 'www.it-agile.de/schulungen/scrum-zertifizierung/schulung-zum-certified-product-owner-cspo/'
 
     for let alias, target of redirections
-        specify "#alias → #target", (done) ->
+        specify "#alias", (done) ->
             assertSameTarget alias, target, done
