@@ -32,6 +32,9 @@ describe 'Url redirections:' ->
         'it-agile.de/csm': 'www.it-agile.de/schulungen/scrum-zertifizierung/schulung-zum-certified-scrummaster-csm/'
         'it-agile.de/cspo': 'www.it-agile.de/schulungen/scrum-zertifizierung/schulung-zum-certified-product-owner-cspo/'
 
+        # Google search result for "scrumtisch hamburg"
+        'it-agile.de/scrumtisch-hamburg.html': 'it-agile.de/scrumtisch-hamburg'
+
     for let alias, target of redirections
         specify "#alias", (done) ->
             assertSameTarget alias, target, done
